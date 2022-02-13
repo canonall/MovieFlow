@@ -1,4 +1,4 @@
-package com.canonal.movie.ui
+package com.canonal.movie.ui.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         val navController = host.navController
         setBottomNavBar(navController)
     }
-
 
     private fun setBottomNavBar(navController: NavController) {
         binding.bottomNavigation.setupWithNavController(navController)
