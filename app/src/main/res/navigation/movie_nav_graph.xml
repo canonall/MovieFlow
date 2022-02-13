@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/movie_nav_graph"
+    app:startDestination="@id/homeMovieFragment">
+
+    <fragment
+        android:id="@+id/homeMovieFragment"
+        android:name="com.canonal.movie.ui.movieHome.MovieHomeFragment"
+        android:label="fragment_movie_home"
+        tools:layout="@layout/fragment_home_movie" />
+    <fragment
+        android:id="@+id/favoriteMovieFragment"
+        android:name="com.canonal.movie.ui.favoriteMovie.FavoriteMovieFragment"
+        android:label="fragment_favorite_movie"
+        tools:layout="@layout/fragment_favorite_movie" />
+</navigation>
