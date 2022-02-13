@@ -1,0 +1,23 @@
+package com.canonal.movie.data.remote
+
+import com.canonal.movie.BuildConfig
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+
+abstract class RetrofitInstance {
+    companion object {
+        @Volatile
+        private var INSTANCE: Retrofit? = null
+
+        fun getRetrofitInstance(): Retrofit {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Retrofit.Builder()
+                    .baseUrl(BuildConfig.BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+                INSTANCE = instance
+                instance
+            }
+        }
+    }
+}
