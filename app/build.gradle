@@ -27,10 +27,38 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
+            debuggable true
             minifyEnabled false
+        }
+        release {
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    flavorDimensions 'api', 'language'
+    productFlavors {
+        dev {
+            dimension 'api'
+            buildConfigField('String', 'BASE_URL', '"https://api.themoviedb.org/"')
+        }
+        prod {
+            //There might be different api for dev, pilot and prod
+            dimension 'api'
+            buildConfigField('String', 'BASE_URL', '"https://api.themoviedb.org/"')
+        }
+        en {
+            dimension 'language'
+            buildConfigField('String', 'URL_LANGUAGE', '"en-US"')
+        }
+        en {
+            dimension 'language'
+            buildConfigField('String', 'URL_LANGUAGE', '"de-DE"')
+        }
+
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -39,7 +67,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures{
+    buildFeatures {
         viewBinding true
         dataBinding true
     }
@@ -83,7 +111,9 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
 
-    //Animated bottombar
-    implementation 'nl.joery.animatedbottombar:library:1.1.0'
+    //fragment
+    def fragment_version = "1.4.1"
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+
 
 }
