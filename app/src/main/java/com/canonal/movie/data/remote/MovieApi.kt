@@ -10,11 +10,11 @@ import retrofit2.http.Query
 
 interface MovieApi {
 
-    @GET("/{version}/movie/")
-    fun getPopularMovies(
-        @Path("version") version: String = "3",
+    @GET("{version}/movie/popular")
+    suspend fun getPopularMovieResponse(
+        @Path("version") version: Int = 3,
         @Query("api_key") apiKey: String = Constants.API_KEY,
         @Query("language") language: String = BuildConfig.URL_LANGUAGE,
         @Query("page") page: Int = 1
-    ): Flow<PopularMovieResponse>
+    ): PopularMovieResponse
 }
