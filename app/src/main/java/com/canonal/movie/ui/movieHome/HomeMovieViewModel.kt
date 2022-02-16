@@ -3,6 +3,7 @@ package com.canonal.movie.ui.movieHome
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.canonal.movie.repository.PopularMovieRepository
+import com.canonal.movie.util.ApiStatus
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -20,11 +21,30 @@ class HomeMovieViewModel(
     fun getPopularMovies() {
         viewModelScope.launch {
             popularMovieRepository.popularMovieResponse
-                .collectLatest { popularMovieResponse ->
-                    _popularMovieList.value = popularMovieList.value.copy(
-                        movieList = popularMovieResponse.movie,
-                        isLoading = false,
-                    )
+                .collectLatest { apiStatus ->
+                    when (apiStatus) {
+                        is ApiStatus.Success -> {
+                            _popularMovieList.value = popularMovieList.value.copy(
+                                movieList = apiStatus.data?.movieList ?: emptyList(),
+                                errorMessage = "",
+                                isLoading = false
+                            )
+                        }
+                        is ApiStatus.Error -> {
+                            _popularMovieList.value = popularMovieList.value.copy(
+                                movieList = emptyList(),
+                                errorMessage = apiStatus.message,
+                                isLoading = false
+                            )
+                        }
+                        is ApiStatus.Loading -> {
+                            _popularMovieList.value = popularMovieList.value.copy(
+                                movieList = emptyList(),
+                                errorMessage = "",
+                                isLoading = true
+                            )
+                        }
+                    }
                 }
         }
     }
