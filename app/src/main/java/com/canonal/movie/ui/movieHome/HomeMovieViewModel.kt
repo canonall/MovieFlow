@@ -3,7 +3,7 @@ package com.canonal.movie.ui.movieHome
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.canonal.movie.repository.PopularMovieRepository
-import com.canonal.movie.util.ApiStatus
+import com.canonal.movie.data.remote.ApiStatus
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

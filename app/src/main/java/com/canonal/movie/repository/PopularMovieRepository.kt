@@ -2,7 +2,7 @@ package com.canonal.movie.repository
 
 import com.canonal.movie.data.remote.MovieApi
 import com.canonal.movie.data.remote.response.PopularMovieResponse
-import com.canonal.movie.util.ApiStatus
+import com.canonal.movie.data.remote.ApiStatus
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

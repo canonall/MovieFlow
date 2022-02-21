@@ -1,4 +1,4 @@
-package com.canonal.movie.util
+package com.canonal.movie.data.remote
 
 sealed class ApiStatus<out T> {
     class Success<T>(val data: T?) : ApiStatus<T>()
