@@ -2,8 +2,8 @@ package com.canonal.movie.ui.movieHome
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.canonal.movie.repository.PopularMovieRepository
 import com.canonal.movie.data.remote.ApiStatus
+import com.canonal.movie.repository.PopularMovieRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,9 +14,9 @@ class HomeMovieViewModel(
     private val popularMovieRepository: PopularMovieRepository
 ) : ViewModel() {
 
-    private val _popularMovieList = MutableStateFlow(PopularMovieListState())
-    val popularMovieList: StateFlow<PopularMovieListState>
-        get() = _popularMovieList.asStateFlow()
+    private val _popularMovieListState = MutableStateFlow(PopularMovieListState())
+    val popularMovieListState: StateFlow<PopularMovieListState>
+        get() = _popularMovieListState.asStateFlow()
 
     fun getPopularMovies() {
         viewModelScope.launch {
@@ -24,24 +24,24 @@ class HomeMovieViewModel(
                 .collectLatest { apiStatus ->
                     when (apiStatus) {
                         is ApiStatus.Success -> {
-                            _popularMovieList.value = popularMovieList.value.copy(
-                                movieList = apiStatus.data?.movieList ?: emptyList(),
-                                errorMessage = "",
-                                isLoading = false
+                            _popularMovieListState.value = popularMovieListState.value.copy(
+                                movieList = apiStatus.data.movieList,
+                                errorMessage = null,
+                                isLoading = false,
                             )
                         }
                         is ApiStatus.Error -> {
-                            _popularMovieList.value = popularMovieList.value.copy(
+                            _popularMovieListState.value = popularMovieListState.value.copy(
                                 movieList = emptyList(),
                                 errorMessage = apiStatus.message,
-                                isLoading = false
+                                isLoading = false,
                             )
                         }
                         is ApiStatus.Loading -> {
-                            _popularMovieList.value = popularMovieList.value.copy(
+                            _popularMovieListState.value = popularMovieListState.value.copy(
                                 movieList = emptyList(),
-                                errorMessage = "",
-                                isLoading = true
+                                errorMessage = null,
+                                isLoading = true,
                             )
                         }
                     }

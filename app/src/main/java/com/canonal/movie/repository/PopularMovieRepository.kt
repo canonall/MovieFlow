@@ -13,8 +13,8 @@ class PopularMovieRepository(
         emit(ApiStatus.Loading())
         try {
             emit(ApiStatus.Success(movieApi.getPopularMovieResponse()))
-        } catch (error: IllegalArgumentException) {
-            emit(ApiStatus.Error(error.localizedMessage ?: "Error"))
+        } catch (e: Exception) {
+            emit(ApiStatus.Error("Something went wrong..."))
         }
     }
 }
