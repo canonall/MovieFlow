@@ -28,6 +28,7 @@ class HomeMovieViewModel(
                                 movieList = apiStatus.data.movieList,
                                 errorMessage = null,
                                 isLoading = false,
+                                status = PopularMovieListStateStatus.SUCCESS
                             )
                         }
                         is ApiStatus.Error -> {
@@ -35,6 +36,7 @@ class HomeMovieViewModel(
                                 movieList = emptyList(),
                                 errorMessage = apiStatus.message,
                                 isLoading = false,
+                                status = PopularMovieListStateStatus.ERROR
                             )
                         }
                         is ApiStatus.Loading -> {
@@ -42,6 +44,7 @@ class HomeMovieViewModel(
                                 movieList = emptyList(),
                                 errorMessage = null,
                                 isLoading = true,
+                                status = PopularMovieListStateStatus.LOADING
                             )
                         }
                     }
