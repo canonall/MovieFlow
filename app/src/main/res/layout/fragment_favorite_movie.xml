@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_red_light"
     tools:context=".ui.favoriteMovie.FavoriteMovieFragment">
 
-    <TextView
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFavoriteMovie"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="FAVORITES" />
+        android:padding="@dimen/rv_padding" />
 
 </FrameLayout>
