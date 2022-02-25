@@ -6,6 +6,6 @@
         android:title="@string/home" />
     <item
         android:id="@+id/favoriteMovieFragment"
-        android:icon="@drawable/ic_favorite_empty"
+        android:icon="@drawable/ic_favorite_outlined"
         android:title="@string/favorites" />
 </menu>
