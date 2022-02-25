@@ -12,6 +12,8 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+//TODO with OnClick add movie to favoriteDB
+
 @HiltViewModel
 class HomeMovieViewModel @Inject constructor(
     private val popularMovieRepository: PopularMovieRepository
