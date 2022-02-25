@@ -9,16 +9,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="@android:color/darker_gray"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray">
 
         <ImageView
-            android:layout_margin="8dp"
             android:id="@+id/ivFavoriteIcon"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:contentDescription="@string/movie_bookmark"
-            android:src="@drawable/ic_favorite_empty"
+            android:layout_margin="8dp"
+            android:contentDescription="@string/movie_favorite"
+            android:src="@drawable/ic_favorite_outlined"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/ivMoviePoster" />
 
