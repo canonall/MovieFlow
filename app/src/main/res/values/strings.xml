@@ -4,4 +4,6 @@
     <string name="favorites">Favorites</string>
     <string name="no_connection_error">No internet connection</string>
     <string name="no_general_error">Something went wrong</string>
+    <string name="movie_poster_url">movie_poster_url</string>
+    <string name="movie_bookmark">movie_bookmark</string>
 </resources>

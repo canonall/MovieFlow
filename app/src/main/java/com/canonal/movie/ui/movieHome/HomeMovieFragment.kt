@@ -31,7 +31,7 @@ class MovieHomeFragment :
                     initializeRecyclerView(
                         binding.rvPopularMovie,
                         PopularMovieAdapter(popularMovieListState.movieList),
-                        LinearLayoutManager(requireContext())
+                        LinearLayoutManager(requireContext()),
                     )
                 }
                 PopularMovieListStateStatus.ERROR -> {
@@ -45,18 +45,22 @@ class MovieHomeFragment :
     }
 
     private fun loadErrorUi(popularMovieListState: PopularMovieListState) {
-        binding.rvPopularMovie.isVisible = false
-        binding.progressBar.isVisible = false
-        binding.tvError.text = popularMovieListState.errorMessage
-        binding.tvError.isVisible = true
-        binding.ivError.isVisible = true
+        binding.apply {
+            rvPopularMovie.isVisible = false
+            progressBar.isVisible = false
+            tvError.text = popularMovieListState.errorMessage
+            tvError.isVisible = true
+            ivError.isVisible = true
+        }
     }
 
     private fun clearUi() {
-        binding.rvPopularMovie.isVisible = true
-        binding.tvError.isVisible = false
-        binding.ivError.isVisible = false
-        binding.progressBar.isVisible = false
+        binding.apply {
+            binding.rvPopularMovie.isVisible = true
+            binding.tvError.isVisible = false
+            binding.ivError.isVisible = false
+            binding.progressBar.isVisible = false
+        }
     }
 
 

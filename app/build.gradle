@@ -48,6 +48,7 @@ android {
         }
         prod {
             //There might be different api for dev, pilot and prod
+            //https://image.tmdb.org/t/p/original/[poster_path]
             dimension 'api'
             buildConfigField('String', 'BASE_URL', '"https://api.themoviedb.org/"')
         }
